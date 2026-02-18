@@ -34,7 +34,11 @@ public class GestionRestaurante {
         r.agregarMesa(m3);
         r.agregarMesa(m4);
         r.agregarMesa(m5);
-        System.out.println(">>> "+r);
+        //System.out.println(">>> "+r);
+        r.getPedidos().add(new Pedido(r.getPedidos().size()+1,10,"primera venta"));
+        r.getPedidos().add(new Pedido(r.getPedidos().size()+1,24,"segunda venta"));
+        r.getPedidos().add(new Pedido(r.getPedidos().size()+1,5,"tercera venta"));
+        System.out.println(r.obtenerMesasDisponibles()+ " total de ventas: "+r.calcularTotalDia());
         
           
     }

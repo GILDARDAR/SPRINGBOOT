@@ -5,6 +5,7 @@
 package gestion.restaurante;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
 public class Restaurante {
     private String nombre, direccion;
     private List<Mesa> mesas;
-
+    private List<Pedido> pedidos = new ArrayList<>();
     public Restaurante() {
         this.mesas = new ArrayList<>();
     }
@@ -52,5 +53,39 @@ public class Restaurante {
         this.mesas.add(mesa);
     }
     
+    public Mesa buscarMesaPorNumero(int num) {
+        Mesa m=null;
+        for (Mesa mesa : mesas) {
+            if (mesa.getNumero()==num) {
+                m = mesa;
+            }
+        }
+        return m;
+    }
+    public List<Mesa> obtenerMesasDisponibles() {
+        List<Mesa> mesas = new ArrayList<>();
+        for (Mesa mesa : this.getMesas()) {
+            if (!mesa.isOcupada()) {
+                mesas.add(mesa);
+            }
+            
+        }
+        return mesas;
+    }
+    public double calcularTotalDia() {
+        double total=0;
+        for (Pedido pedido : pedidos) {
+            total=total+pedido.total;
+        }
+        return total;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
     
 }
