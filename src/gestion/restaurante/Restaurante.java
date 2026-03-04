@@ -4,9 +4,12 @@
  */
 package gestion.restaurante;
 
+import java.lang.reflect.Array;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  *
@@ -87,5 +90,26 @@ public class Restaurante {
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
     }
-    
+    public List<Pedido> getPedidosHoy() {
+        Stream<Pedido> pediHoy =pedidos.stream()
+          .filter(
+            n -> n.getFecha().compareTo(
+              LocalDate.now())==0)
+          ;
+        
+        
+        return pediHoy.toList();
+    }
+  
+      public double  getFacturacionHoy() {
+          
+        
+          double facturacion=getPedidosHoy().stream()
+            .map(Pedido::getTotal)
+            .reduce(0.0, Double::sum);
+        
+        
+        return facturacion;
+    }
+  
 }

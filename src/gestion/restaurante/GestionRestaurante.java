@@ -4,6 +4,9 @@
  */
 package gestion.restaurante;
 
+import java.time.LocalDate;
+import java.time.Month;
+
 /**
  *
  * @author gilda
@@ -38,8 +41,16 @@ public class GestionRestaurante {
         r.getPedidos().add(new Pedido(r.getPedidos().size()+1,10,"primera venta"));
         r.getPedidos().add(new Pedido(r.getPedidos().size()+1,24,"segunda venta"));
         r.getPedidos().add(new Pedido(r.getPedidos().size()+1,5,"tercera venta"));
-        System.out.println(r.obtenerMesasDisponibles()+ " total de ventas: "+r.calcularTotalDia());
+        LocalDate ld= LocalDate.of(2026, 3, 4);
+        r.getPedidos().get(0).setFecha(ld);
+        ld= LocalDate.of(2026, 2, 1);
+        r.getPedidos().get(1).setFecha(ld);
+        ld= LocalDate.of(2026, 3, 4);
+        r.getPedidos().get(2).setFecha(ld);
         
+        System.out.println(r.obtenerMesasDisponibles()+ " total de ventas: "+r.calcularTotalDia());
+        System.out.println("mesas del dia: "+r.getPedidosHoy());
+        System.out.println("total facturacion: "+r.getFacturacionHoy());
           
     }
     

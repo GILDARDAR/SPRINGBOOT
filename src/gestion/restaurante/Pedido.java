@@ -4,6 +4,8 @@
  */
 package gestion.restaurante;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author gilda
@@ -12,10 +14,19 @@ public class Pedido {
     int id;
     double total;
     String descripcion;
+    LocalDate fecha;
+    Double iva;
 
     @Override
     public String toString() {
-        return "Pedido{" + "id=" + id + ", total=" + total + ", descripcion=" + descripcion + '}';
+        return "Pedido{" + "id=" + id + ", total=" + total + ", descripcion=" + descripcion + ", fecha=" + fecha + ", iva=" + iva + '}';
+    }
+
+
+
+    public void getIva(double porcent){ 
+        iva=total*(porcent/100);
+        
     }
 
     public Pedido(int id, double total, String descripcion) {
@@ -46,6 +57,22 @@ public class Pedido {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
+
+    public Double getIva() {
+        return iva;
+    }
+
+    public void setIva(Double iva) {
+        this.iva = iva;
     }
     
     

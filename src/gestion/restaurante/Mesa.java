@@ -44,8 +44,7 @@ public class Mesa {
     @Override
     public String toString() {
         return "Mesa{" + "capacidad=" + capacidad + ", numero=" + numero + ", ocupada=" + ocupada + '}';
-        
-          }
+    }
 
     public void ocupar() {
         this.ocupada=true;
